@@ -1,0 +1,23 @@
+{
+  "name": "medianest-tv",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MediaNest TV: reproductor de películas, series y música para LG webOS TV 32LM570BPUA.",
+  "scripts": {
+    "dev": "npx http-server app -p 8080 -c-1",
+    "sim:webos6": "ares-launch -s 6.0 -sp \"C:\\LG_WEBOS_STUDIO_SDK\\TV\\Simulator\\webOS_TV_6.0_Simulator_1.4.1\" app",
+    "sim:webos22": "ares-launch -s 22 -sp \"C:\\LG_WEBOS_STUDIO_SDK\\TV\\Simulator\\webOS_TV_22_Simulator_1.4.1\" app",
+    "sim:webos24": "ares-launch -s 24 -sp \"C:\\LG_WEBOS_STUDIO_SDK\\TV\\Simulator\\webOS_TV_24_Simulator_1.4.1\" app",
+    "package:webos": "ares-package app",
+    "install:webos": "ares-install --device school-lg-tv com.emman.medianest_0.1.0_all.ipk",
+    "launch:webos": "ares-launch --device school-lg-tv com.emman.medianest",
+    "inspect:webos": "ares-inspect --device school-lg-tv --app com.emman.medianest"
+  },
+  "devDependencies": {
+    "@webos-tools/cli": "^3.2.5",
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
