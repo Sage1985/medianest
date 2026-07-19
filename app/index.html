@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1280, height=720, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#07111f">
+  <title>MediaNest TV</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <aside class="sidebar" aria-label="Navegacion principal">
+      <div class="brand">
+        <div class="brand-mark">MN</div>
+        <div>
+          <div class="brand-title">MediaNest</div>
+          <div class="brand-subtitle">TV</div>
+        </div>
+      </div>
+
+      <button class="focusable nav-item is-active" data-action="section" data-section="home">Inicio</button>
+      <button class="focusable nav-item" data-action="section" data-section="movies">Peliculas</button>
+      <button class="focusable nav-item" data-action="section" data-section="series">Series</button>
+      <button class="focusable nav-item" data-action="section" data-section="music">Musica</button>
+      <button class="focusable nav-item" data-action="section" data-section="search">Buscar</button>
+      <button class="focusable nav-item" data-action="section" data-section="space">Mi espacio</button>
+    </aside>
+
+    <main class="content">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Seleccion MediaNest</p>
+          <h1 id="heroTitle">Historias abiertas. Sin complicaciones.</h1>
+          <p id="heroDescription">Peliculas, cortometrajes y episodios de prueba que puedes reproducir directamente en esta TV.</p>
+
+          <div class="search-bar">
+            <input id="searchInput" class="focusable search-input" data-action="search-input" type="text" placeholder="Buscar en internet..." aria-label="Buscar online">
+            <button class="focusable search-button" data-action="search-online">Buscar</button>
+          </div>
+
+          <div id="typeFilters" class="type-filters" aria-label="Filtros de busqueda">
+            <button class="focusable filter-chip is-active" data-action="filter-type" data-filter="all">Todas</button>
+            <button class="focusable filter-chip" data-action="filter-type" data-filter="movies">Peliculas</button>
+            <button class="focusable filter-chip" data-action="filter-type" data-filter="series">Series</button>
+            <button class="focusable filter-chip" data-action="filter-type" data-filter="music">Musica</button>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="Tendencia destacada">
+          <img id="heroImage" class="hero-image" alt="">
+          <div class="hero-card-caption">
+            <span>Tendencia</span>
+            <strong id="heroMediaTitle">Cargando...</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="row" aria-label="Continuar viendo">
+        <div class="row-header">
+          <h2>Continuar viendo</h2>
+          <span id="continueHint">Progreso guardado localmente</span>
+        </div>
+        <div id="continueRow" class="card-row"></div>
+      </section>
+
+      <section class="row" aria-label="Catalogo">
+        <div class="row-header">
+          <h2 id="sectionTitle">Recomendado</h2>
+          <div class="row-actions">
+            <span id="sectionHint">Cargando recomendaciones online</span>
+            <button id="prevPageButton" class="focusable page-button is-hidden" data-action="page-prev">Anterior</button>
+            <button id="nextPageButton" class="focusable page-button is-hidden" data-action="page-next">Siguiente</button>
+          </div>
+        </div>
+        <div id="catalogRow" class="card-row"></div>
+      </section>
+    </main>
+
+    <div id="playerOverlay" class="player-overlay is-hidden" role="dialog" aria-label="Reproductor">
+      <div class="player-screen">
+        <div class="player-topbar">
+          <div class="player-title" id="playerTitle">Reproduciendo</div>
+          <button class="focusable player-exit" data-action="close-player">Salir</button>
+        </div>
+        <div class="player-art" id="playerArt">
+          <video id="videoPlayer" class="media-player is-hidden" playsinline></video>
+          <iframe id="youtubePlayer" class="media-player is-hidden" title="Reproductor de musica" allow="autoplay; encrypted-media; fullscreen" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" tabindex="-1"></iframe>
+          <audio id="audioPlayer"></audio>
+          <div id="audioArt" class="audio-art">MediaNest</div>
+        </div>
+        <div class="player-controls">
+          <button class="focusable player-button" data-action="rewind">-10</button>
+          <button class="focusable player-button" data-action="toggle-play">Play</button>
+          <button class="focusable player-button" data-action="forward">+30</button>
+          <button class="focusable player-save" data-action="save-current">Guardar</button>
+        </div>
+        <div class="time-row">
+          <span id="currentTimeLabel">0:00</span>
+          <div class="progress"><span id="progressBar"></span></div>
+          <span id="durationLabel">0:00</span>
+        </div>
+        <p class="player-help">OK pausa/reproduce | FF avanza 30s | REW retrocede 10s | BACK cierra</p>
+      </div>
+    </div>
+
+    <div id="detailOverlay" class="detail-overlay is-hidden" role="dialog" aria-label="Detalle del contenido">
+      <div id="detailBackdrop" class="detail-backdrop"></div>
+      <div class="detail-shade"></div>
+      <div class="detail-content">
+        <p id="detailKind" class="detail-kicker">MEDIA NEST ORIGINAL</p>
+        <h2 id="detailTitle" class="detail-title">Titulo</h2>
+        <div id="detailMeta" class="detail-meta"></div>
+        <p id="detailDescription" class="detail-description"></p>
+        <div class="detail-actions">
+          <button class="focusable detail-primary" data-action="detail-play">Reproducir</button>
+          <button id="detailSaveButton" class="focusable detail-secondary" data-action="detail-save">Guardar</button>
+          <button class="focusable detail-secondary" data-action="detail-close">Cerrar</button>
+        </div>
+        <div id="episodeArea" class="episode-area is-hidden">
+          <div class="episode-heading"><h3>Episodios</h3><span>Temporada 1</span></div>
+          <div id="episodeRow" class="episode-row"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+  </div>
+
+  <script src="scripts/data.js"></script>
+  <script src="scripts/config.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
