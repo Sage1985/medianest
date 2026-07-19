@@ -1,0 +1,13 @@
+{
+  "id": "com.emman.medianest",
+  "version": "0.1.0",
+  "vendor": "Emman",
+  "type": "web",
+  "main": "index.html",
+  "title": "MediaNest TV",
+  "icon": "assets/icon.svg",
+  "largeIcon": "assets/large-icon.svg",
+  "resolution": "1280x720",
+  "disableBackHistoryAPI": true,
+  "requiredPermissions": []
+}
