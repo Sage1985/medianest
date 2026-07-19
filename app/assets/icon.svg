@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <rect width="80" height="80" rx="22" fill="#22d3ee"/>
+  <path d="M28 22v36l30-18L28 22z" fill="#07111f"/>
+  <text x="10" y="70" fill="#07111f" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="800">MN</text>
+</svg>
